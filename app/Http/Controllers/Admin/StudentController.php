@@ -9,6 +9,7 @@ use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Batch;
 use App\Models\Degree;
+use App\Models\User;
 use App\Models\Student;
 use Gate;
 use Illuminate\Http\Request;
@@ -42,6 +43,21 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         $student = Student::create($request->all());
+
+        if ($request->has('user_account')) {
+            $user = User::create([
+                'name' => $request['first_name'].$request['last_name'],
+                'email' => $request['user_email'],
+                'password' => $request['password'],
+            ]);
+            
+            //It Should be dynamic.
+            $user->roles()->sync(3);
+
+            $student->update([
+                'user_id' => $user->id
+            ]);
+        }
 
         if ($request->input('id_proof', false)) {
             $student->addMedia(storage_path('tmp/uploads/' . $request->input('id_proof')))->toMediaCollection('id_proof');
@@ -78,6 +94,34 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         $student->update($request->all());
+
+         if ($request->has('user_account')) {
+           
+            if($student->user){
+                $student->user->update([
+                    'name' => $request['first_name'].$request['last_name'],
+                    'email' => $request['user_email'],
+                    'password' => $request['password'],
+                ]);
+            } else {
+                $user = User::create([
+                    'name' => $request['first_name'].$request['last_name'],
+                    'email' => $request['user_email'],
+                    'password' => $request['password'],
+                ]);
+                
+                $user->roles()->sync(3);
+    
+                $student->update([
+                    'user_id' => $user->id
+                ]);
+            }
+
+        } else {
+            if($student->user){
+                $student->user->delete();
+            }
+        }
 
         if ($request->input('id_proof', false)) {
             if (!$student->id_proof || $request->input('id_proof') !== $student->id_proof->file_name) {
@@ -130,6 +174,10 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         abort_if(Gate::denies('student_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        
+        if($student->user){
+            $student->user->delete();
+        }
 
         $student->delete();
 
@@ -154,4 +202,5 @@ class StudentController extends Controller
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
+   
 }

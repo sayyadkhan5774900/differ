@@ -35,7 +35,7 @@ class SettingsController extends Controller
 
     public function store(StoreSettingRequest $request)
     {
-        $setting = Setting::create($request->validated());
+        $setting = Setting::create($request->all());
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $setting->id]);
@@ -53,7 +53,7 @@ class SettingsController extends Controller
 
     public function update(UpdateSettingRequest $request, Setting $setting)
     {
-        $setting->update($request->validated());
+        $setting->update($request->all());
 
         return redirect()->route('frontend.settings.index');
     }

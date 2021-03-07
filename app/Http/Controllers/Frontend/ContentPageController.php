@@ -41,12 +41,12 @@ class ContentPageController extends Controller
 
     public function store(StoreContentPageRequest $request)
     {
-        $contentPage = ContentPage::create($request->validated());
+        $contentPage = ContentPage::create($request->all());
         $contentPage->categories()->sync($request->input('categories', []));
         $contentPage->tags()->sync($request->input('tags', []));
 
         if ($request->input('featured_image', false)) {
-            $contentPage->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
+            $contentPage->addMedia(storage_path('tmp/uploads/' . $request->input('featured_image')))->toMediaCollection('featured_image');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -71,7 +71,7 @@ class ContentPageController extends Controller
 
     public function update(UpdateContentPageRequest $request, ContentPage $contentPage)
     {
-        $contentPage->update($request->validated());
+        $contentPage->update($request->all());
         $contentPage->categories()->sync($request->input('categories', []));
         $contentPage->tags()->sync($request->input('tags', []));
 
@@ -81,7 +81,7 @@ class ContentPageController extends Controller
                     $contentPage->featured_image->delete();
                 }
 
-                $contentPage->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
+                $contentPage->addMedia(storage_path('tmp/uploads/' . $request->input('featured_image')))->toMediaCollection('featured_image');
             }
         } elseif ($contentPage->featured_image) {
             $contentPage->featured_image->delete();

@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'clone of IPS',
+    'site_title' => 'IPS',
 ];

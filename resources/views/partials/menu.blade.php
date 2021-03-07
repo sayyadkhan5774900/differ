@@ -63,7 +63,7 @@
         @can('study_material_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.study-materials.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/study-materials") || request()->is("admin/study-materials/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-book-open c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.studyMaterial.title') }}
@@ -71,9 +71,9 @@
             </li>
         @endcan
         @can('fees_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/fee-types*") ? "c-show" : "" }} {{ request()->is("admin/fees*") ? "c-show" : "" }} {{ request()->is("admin/invoices*") ? "c-show" : "" }} {{ request()->is("admin/instalments*") ? "c-show" : "" }} {{ request()->is("admin/reports*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/fee-types*") ? "c-show" : "" }} {{ request()->is("admin/fees*") ? "c-show" : "" }} {{ request()->is("admin/invoices*") ? "c-show" : "" }} {{ request()->is("admin/instalments*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-dollar-sign c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.feesManagement.title') }}
@@ -116,16 +116,6 @@
 
                                 </i>
                                 {{ trans('cruds.instalment.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('report_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.reports.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/reports") || request()->is("admin/reports/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-table c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.report.title') }}
                             </a>
                         </li>
                     @endcan
@@ -205,9 +195,9 @@
             </li>
         @endcan
         @can('student_notification_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/attendance-notifications*") ? "c-show" : "" }} {{ request()->is("admin/date-sheet-notifications*") ? "c-show" : "" }} {{ request()->is("admin/result-notifications*") ? "c-show" : "" }} {{ request()->is("admin/notifications*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/attendance-notifications*") ? "c-show" : "" }} {{ request()->is("admin/notifications*") ? "c-show" : "" }} {{ request()->is("admin/date-sheet-notifications*") ? "c-show" : "" }} {{ request()->is("admin/result-notifications*") ? "c-show" : "" }} {{ request()->is("admin/notifications*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw far fa-bell c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.studentNotification.title') }}
@@ -215,7 +205,7 @@
                 <ul class="c-sidebar-nav-dropdown-items">
                     @can('attendance_notification_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.attendance-notifications.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/attendance-notifications") || request()->is("admin/attendance-notifications/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.attendance-notifications.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/attendance-notifications") || request()->is("admin/attendance-notifications/*") || request()->is("admin/notifications/*") ? "c-active" : "" }}">
                                 <i class="fa-fw far fa-calendar-alt c-sidebar-nav-icon">
 
                                 </i>
@@ -225,7 +215,7 @@
                     @endcan
                     @can('date_sheet_notification_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.date-sheet-notifications.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/date-sheet-notifications") || request()->is("admin/date-sheet-notifications/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.date-sheet-notifications.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/date-sheet-notifications") || request()->is("admin/date-sheet-notifications/*") || request()->is("admin/notifications/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-file c-sidebar-nav-icon">
 
                                 </i>
@@ -235,7 +225,7 @@
                     @endcan
                     @can('result_notification_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.result-notifications.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/result-notifications") || request()->is("admin/result-notifications/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.result-notifications.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/result-notifications") || request()->is("admin/result-notifications/*") || request()->is("admin/notifications/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-trophy c-sidebar-nav-icon">
 
                                 </i>
@@ -243,7 +233,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('notification_access')
+                    {{-- @can('notification_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.notifications.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/notifications") || request()->is("admin/notifications/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
@@ -252,7 +242,7 @@
                                 {{ trans('cruds.notification.title') }}
                             </a>
                         </li>
-                    @endcan
+                    @endcan --}}
                 </ul>
             </li>
         @endcan
@@ -267,7 +257,7 @@
             </li>
         @endcan
         @can('content_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/content-categories*") ? "c-show" : "" }} {{ request()->is("admin/content-tags*") ? "c-show" : "" }} {{ request()->is("admin/content-pages*") ? "c-show" : "" }} {{ request()->is("admin/home-sliders*") ? "c-show" : "" }} {{ request()->is("admin/faqs*") ? "c-show" : "" }} {{ request()->is("admin/team-memebers*") ? "c-show" : "" }} {{ request()->is("admin/services*") ? "c-show" : "" }} {{ request()->is("admin/testimonials*") ? "c-show" : "" }} {{ request()->is("admin/events*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/content-categories*") ? "c-show" : "" }} {{ request()->is("admin/content-tags*") ? "c-show" : "" }} {{ request()->is("admin/content-pages*") ? "c-show" : "" }} {{ request()->is("admin/home-sliders*") ? "c-show" : "" }} {{ request()->is("admin/faqs*") ? "c-show" : "" }} {{ request()->is("admin/team-memebers*") ? "c-show" : "" }} {{ request()->is("admin/services*") ? "c-show" : "" }} {{ request()->is("admin/testimonials*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-book c-sidebar-nav-icon">
 
@@ -352,16 +342,6 @@
 
                                 </i>
                                 {{ trans('cruds.testimonial.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('event_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.events.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/events") || request()->is("admin/events/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-images c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.event.title') }}
                             </a>
                         </li>
                     @endcan

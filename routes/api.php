@@ -64,8 +64,4 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Study Materials
     Route::post('study-materials/media', 'StudyMaterialApiController@storeMedia')->name('study-materials.storeMedia');
     Route::apiResource('study-materials', 'StudyMaterialApiController');
-
-    // Events
-    Route::post('events/media', 'EventsApiController@storeMedia')->name('events.storeMedia');
-    Route::apiResource('events', 'EventsApiController');
 });

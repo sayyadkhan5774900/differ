@@ -75,4 +75,14 @@ class Batch extends Model
     {
         $this->attributes['ending_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', 'active');
+    }
+    
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }

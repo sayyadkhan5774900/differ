@@ -19,8 +19,7 @@ class StoreServiceRequest extends FormRequest
         return [
             'name'        => [
                 'string',
-                'min:5',
-                'max:25',
+                'min:2',
                 'required',
             ],
             'title'       => [

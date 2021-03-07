@@ -17,11 +17,8 @@ class StoreStudyMaterialRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'  => [
+            'title' => [
                 'string',
-                'required',
-            ],
-            'file.*' => [
                 'required',
             ],
         ];

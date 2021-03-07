@@ -51,7 +51,16 @@ class NotificationController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $notification->id]);
         }
 
-        return redirect()->route('admin.notifications.index');
+        if ($notification->type == 'attendance') {
+            return redirect()->route('admin.attendance-notifications.index');
+        }
+        if ($notification->type == 'date_sheet') {
+            return redirect()->route('admin.date-sheet-notifications.index');
+        }
+        if ($notification->type == 'result') {
+            return redirect()->route('admin.result-notifications.index');
+        }
+
     }
 
     public function edit(Notification $notification)
@@ -87,7 +96,15 @@ class NotificationController extends Controller
             }
         }
 
-        return redirect()->route('admin.notifications.index');
+        if ($notification->type == 'attendence') {
+            return redirect()->route('admin.attendanceNotifications.index');
+        }
+        if ($notification->type == 'date-sheet') {
+            return redirect()->route('admin.dateSheetNotifications.index');
+        }
+        if ($notification->type == 'result') {
+            return redirect()->route('admin.resultNotifications.index');
+        }
     }
 
     public function show(Notification $notification)
@@ -104,8 +121,18 @@ class NotificationController extends Controller
         abort_if(Gate::denies('notification_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $notification->delete();
+        
+        $type = $notification->type;
 
-        return back();
+        if ($type == 'attendence') {
+            return redirect()->route('admin.attendanceNotifications.index');
+        }
+        if ($type == 'date-sheet') {
+            return redirect()->route('admin.dateSheetNotifications.index');
+        }
+        if ($type == 'result') {
+            return redirect()->route('admin.resultNotifications.index');
+        }
     }
 
     public function massDestroy(MassDestroyNotificationRequest $request)

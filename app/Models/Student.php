@@ -176,4 +176,9 @@ class Student extends Model implements HasMedia
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }

@@ -12,7 +12,7 @@
             @csrf
             <div class="form-group">
                 <label class="required" for="key">{{ trans('cruds.setting.fields.key') }}</label>
-                <input class="form-control {{ $errors->has('key') ? 'is-invalid' : '' }}" type="text" name="key" id="key" value="{{ old('key', $setting->key) }}" required>
+                <input readonly class="form-control {{ $errors->has('key') ? 'is-invalid' : '' }}" type="text" name="key" id="key" value="{{ old('key', $setting->key) }}" required>
                 @if($errors->has('key'))
                     <div class="invalid-feedback">
                         {{ $errors->first('key') }}

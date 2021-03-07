@@ -46,6 +46,8 @@ return [
     'verifyYourUser'                       => 'To finish your registration - site asks you to verify your email',
     'view'                                 => 'View',
     'view_file'                            => 'View file',
+    'view_more'                            => 'View More',
+    'read_more'                            => 'Read More',
     'year'                                 => 'Year',
     'yes'                                  => 'Yes',
     'youAreLoggedIn'                       => 'You are logged in!',

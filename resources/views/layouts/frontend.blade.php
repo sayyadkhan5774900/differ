@@ -97,11 +97,6 @@
                                             {{ trans('cruds.student.title') }}
                                         </a>
                                     @endcan
-                                    @can('study_material_access')
-                                        <a class="dropdown-item" href="{{ route('frontend.study-materials.index') }}">
-                                            {{ trans('cruds.studyMaterial.title') }}
-                                        </a>
-                                    @endcan
                                     @can('fees_management_access')
                                         <a class="dropdown-item disabled" href="#">
                                             {{ trans('cruds.feesManagement.title') }}
@@ -217,11 +212,6 @@
                                             {{ trans('cruds.testimonial.title') }}
                                         </a>
                                     @endcan
-                                    @can('event_access')
-                                        <a class="dropdown-item ml-3" href="{{ route('frontend.events.index') }}">
-                                            {{ trans('cruds.event.title') }}
-                                        </a>
-                                    @endcan
                                     @can('setting_access')
                                         <a class="dropdown-item" href="{{ route('frontend.settings.index') }}">
                                             {{ trans('cruds.setting.title') }}
@@ -245,6 +235,11 @@
                                     @can('user_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.users.index') }}">
                                             {{ trans('cruds.user.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('study_material_access')
+                                        <a class="dropdown-item" href="{{ route('frontend.study-materials.index') }}">
+                                            {{ trans('cruds.studyMaterial.title') }}
                                         </a>
                                     @endcan
 

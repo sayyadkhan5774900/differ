@@ -58,13 +58,13 @@
                                     </a>
                                 @endcan
 
-                                @can('setting_delete')
-                                    <form action="{{ route('admin.settings.destroy', $setting->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                    </form>
-                                @endcan
+                                <!--@can('setting_delete')-->
+                                <!--    <form action="{{ route('admin.settings.destroy', $setting->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">-->
+                                <!--        <input type="hidden" name="_method" value="DELETE">-->
+                                <!--        <input type="hidden" name="_token" value="{{ csrf_token() }}">-->
+                                <!--        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">-->
+                                <!--    </form>-->
+                                <!--@endcan-->
 
                             </td>
 
@@ -89,7 +89,7 @@
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('admin.settings.massDestroy') }}",
-    className: 'btn-danger',
+    className: 'btn-danger d-none',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
           return $(entry).data('entry-id')

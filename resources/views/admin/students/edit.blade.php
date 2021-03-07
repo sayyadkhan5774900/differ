@@ -10,34 +10,9 @@
         <form method="POST" action="{{ route("admin.students.update", [$student->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
-            <div class="form-group">
-                <label class="required" for="degree_id">{{ trans('cruds.student.fields.degree') }}</label>
-                <select class="form-control select2 {{ $errors->has('degree') ? 'is-invalid' : '' }}" name="degree_id" id="degree_id" required>
-                    @foreach($degrees as $id => $degree)
-                        <option value="{{ $id }}" {{ (old('degree_id') ? old('degree_id') : $student->degree->id ?? '') == $id ? 'selected' : '' }}>{{ $degree }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('degree'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('degree') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.student.fields.degree_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="batch_id">{{ trans('cruds.student.fields.batch') }}</label>
-                <select class="form-control select2 {{ $errors->has('batch') ? 'is-invalid' : '' }}" name="batch_id" id="batch_id" required>
-                    @foreach($batches as $id => $batch)
-                        <option value="{{ $id }}" {{ (old('batch_id') ? old('batch_id') : $student->batch->id ?? '') == $id ? 'selected' : '' }}>{{ $batch }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('batch'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('batch') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.student.fields.batch_helper') }}</span>
-            </div>
+           
+            @livewire('admin.student.create.dependent-dropdown', ['student' => $student])
+
             <div class="form-group">
                 <label class="required" for="first_name">{{ trans('cruds.student.fields.first_name') }}</label>
                 <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}" type="text" name="first_name" id="first_name" value="{{ old('first_name', $student->first_name) }}" required>
@@ -251,6 +226,41 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.student.fields.is_active_helper') }}</span>
             </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="user_account" id="user_account"
+                            value="checkedValue" {{ $student->user ? 'checked' : '' }}>
+                        Has User Account
+                    </label>
+                </div>
+            </div>
+
+            <div id="user_account_show" class="{{ $student->user ? '' : 'd-none' }}">
+                <div class="form-group">
+                    <label for="user_email">User Email</label>
+                    <input type="email" class="form-control {{ $errors->has('user_email') ? 'is-invalid' : '' }}"
+                        name="user_email" id="user_email" placeholder="User Email" value="{{ $student->user->email ?? '' }}">
+                    @if($errors->has('user_email'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('user_email') }}
+                    </div>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
+                        name="password" id="password" placeholder="Password">
+                    @if($errors->has('password'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('password') }}
+                    </div>
+                    @endif
+                </div>
+            </div>
+
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
@@ -265,6 +275,27 @@
 @endsection
 
 @section('scripts')
+
+<script>
+    $(function() {
+     $("#user_account").click(function(){
+         if ($("#user_account").is(":checked"))
+         {
+            $('#user_account_show').removeClass('d-none');
+            $('#user_email').attr("required", true);
+            $('#password').attr("required", true);
+         }
+         else
+         {
+            $('#user_account_show').addClass('d-none');
+            $('#user_email').attr("required", false);
+            $('#password').attr("required", false);
+         }
+     });
+    });
+</script>
+
+
 <script>
     $(document).ready(function () {
   function SimpleUploadAdapter(editor) {
