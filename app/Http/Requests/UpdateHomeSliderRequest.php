@@ -19,12 +19,10 @@ class UpdateHomeSliderRequest extends FormRequest
         return [
             'title'       => [
                 'string',
-                'max:60',
                 'required',
             ],
             'body_text'   => [
                 'string',
-                'max:200',
                 'nullable',
             ],
             'button_link' => [

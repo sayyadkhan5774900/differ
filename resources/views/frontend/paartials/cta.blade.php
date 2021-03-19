@@ -1,3 +1,4 @@
+@if ($settings['call_to_action_title'] != null || $settings['call_to_action_title'] != '')
 <section id="cta" class="cta">
   <div class="container">
 
@@ -12,6 +13,6 @@
       </div>
       @endif
     </div>
-
   </div>
-</section>
+</section>    
+@endif

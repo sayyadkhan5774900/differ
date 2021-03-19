@@ -19,19 +19,19 @@
           <div class="email">
             <i class="icofont-envelope"></i>
             <h4>Email:</h4>
-            <p><a href="mailto:{!! $settings['contact_email'] ?? '' !!}">{!! $settings['contact_email'] ?? '' !!}</a></p>
+            <p><a href="mailto:{{ $settings['contact_email'] ?? '' }}">{!! $settings['contact_email'] ?? '' !!}</a></p>
           </div>
 
           <div class="phone">
             <i class="icofont-phone"></i>
             <h4>Phone:</h4>
-            <p><a href="tel:{!! str_replace(' ', '', $settings['contact_phone'] ?? '') !!}">{!! $settings['contact_phone'] ?? '' !!}</a></p>
+            <p><a href="tel:{{ str_replace(' ', '', $settings['contact_phone'] ?? '') }}">{!! $settings['contact_phone'] ?? '' !!}</a></p>
           </div>
 
           <div class="phone">
             <i class="icofont-phone"></i>
             <h4>Mobile:</h4>
-            <p><a href="tel:{!! str_replace(' ', '', $settings['contact_mobile'] ?? '') !!}">{!! $settings['contact_phone'] ?? '' !!}</a></p>
+            <p><a href="tel:{{ str_replace(' ', '', $settings['contact_mobile'] ?? '') }}">{!! $settings['contact_phone'] ?? '' !!}</a></p>
           </div>
 
         </div>

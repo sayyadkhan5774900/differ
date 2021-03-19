@@ -35,6 +35,7 @@
 
         // User Alerts
         Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
+        Route::get('user-alerts/read', 'UserAlertsController@read');
         Route::resource('user-alerts', 'UserAlertsController', ['except' => ['edit', 'update']]);
 
         // Expense Categories
@@ -73,6 +74,8 @@
         Route::delete('students/destroy', 'StudentController@massDestroy')->name('students.massDestroy');
         Route::post('students/media', 'StudentController@storeMedia')->name('students.storeMedia');
         Route::post('students/ckmedia', 'StudentController@storeCKEditorImages')->name('students.storeCKEditorImages');
+        Route::post('students/parse-csv-import', 'StudentController@parseCsvImport')->name('students.parseCsvImport');
+        Route::post('students/process-csv-import', 'StudentController@processCsvImport')->name('students.processCsvImport');    
         Route::resource('students', 'StudentController');
 
         // Fee Types
@@ -116,6 +119,8 @@
 
         // Home Sliders
         Route::delete('home-sliders/destroy', 'HomeSliderController@massDestroy')->name('home-sliders.massDestroy');
+        Route::post('home-sliders/media', 'HomeSliderController@storeMedia')->name('home-sliders.storeMedia');
+        Route::post('home-sliders/ckmedia', 'HomeSliderController@storeCKEditorImages')->name('home-sliders.storeCKEditorImages');    
         Route::resource('home-sliders', 'HomeSliderController');
 
         // Faqs
@@ -153,6 +158,15 @@
         Route::post('study-materials/media', 'StudyMaterialController@storeMedia')->name('study-materials.storeMedia');
         Route::post('study-materials/ckmedia', 'StudyMaterialController@storeCKEditorImages')->name('study-materials.storeCKEditorImages');
         Route::resource('study-materials', 'StudyMaterialController');
+
+        // Events
+        Route::delete('events/destroy', 'EventsController@massDestroy')->name('events.massDestroy');
+        Route::post('events/media', 'EventsController@storeMedia')->name('events.storeMedia');
+        Route::post('events/ckmedia', 'EventsController@storeCKEditorImages')->name('events.storeCKEditorImages');
+        Route::resource('events', 'EventsController');
+
+        // Reports
+        Route::resource('reports', 'ReportController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
         Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
         Route::get('messenger', 'MessengerController@index')->name('messenger.index');
@@ -321,6 +335,15 @@
         Route::post('study-materials/ckmedia', 'StudyMaterialController@storeCKEditorImages')->name('study-materials.storeCKEditorImages');
         Route::resource('study-materials', 'StudyMaterialController');
 
+          // Events
+        Route::delete('events/destroy', 'EventsController@massDestroy')->name('events.massDestroy');
+        Route::post('events/media', 'EventsController@storeMedia')->name('events.storeMedia');
+        Route::post('events/ckmedia', 'EventsController@storeCKEditorImages')->name('events.storeCKEditorImages');
+        Route::resource('events', 'EventsController');
+
+        // Reports
+        Route::resource('reports', 'ReportController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+
         Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
         Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');
         Route::post('frontend/profile/destroy', 'ProfileController@destroy')->name('profile.destroy');
@@ -333,6 +356,9 @@
     Route::get('/download/notification/{url}', 'LandingController@notificationDownload')->name('notification.download');
     Route::get('/post/{id}', 'LandingController@post')->name('post.show');
     Route::get('/materials', 'LandingController@materials')->name('materials');
+    Route::get('/blog', 'LandingController@blog')->name('blog');
+    Route::get('/events', 'LandingController@events')->name('events');
+    Route::get('/event', 'LandingController@event')->name('event');
     Route::get('/student/profile', 'LandingController@profile')->name('student.profile')->middleware(['auth']);
     Route::post('/student/password', 'LandingController@password')->name('student.password')->middleware(['auth']);
 

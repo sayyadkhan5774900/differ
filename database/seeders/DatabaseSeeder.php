@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Setting;
+use App\Models\Student;
+use App\Models\User;
+use Database\Factories\StudentFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,7 +18,7 @@ class DatabaseSeeder extends Seeder
             PermissionRoleTableSeeder::class,
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
-
+            
               //Database seeders
               DegreeTableSeeder::class,
               BatchTableSeeder::class,

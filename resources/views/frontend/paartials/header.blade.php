@@ -19,7 +19,8 @@
           <li><a href="{{ Route::current()->getName() != 'landing' ? route('landing') : '' }}#team">Team</a></li>
           <li class="drop-down"><a href="">Others</a>
             <ul>
-              <li><a href="{{ Route::current()->getName() != 'landing' ? route('landing') : '' }}#blog">Blog</a></li>
+              <li><a href="{{ route('events') }}">Events</a></li>
+              <li><a href="{{ route('blog') }}">Blog</a></li>
               <li><a href="{{ Route::current()->getName() != 'landing' ? route('landing') : '' }}#testimonials">Testimonials</a></li>
               <li><a href="{{ Route::current()->getName() != 'landing' ? route('landing') : '' }}#faqs">Faqs</a></li>
               <li><a href="{{ route('materials') }}">Study Materials</a></li>

@@ -55,6 +55,18 @@
                             {{ $homeSlider->button_name }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.homeSlider.fields.background_iamge') }}
+                        </th>
+                        <td>
+                            @if($homeSlider->background_iamge)
+                                <a href="{{ $homeSlider->background_iamge->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $homeSlider->background_iamge->getUrl('thumb') }}">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

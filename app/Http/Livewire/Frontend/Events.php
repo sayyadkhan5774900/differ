@@ -2,21 +2,21 @@
 
 namespace App\Http\Livewire\Frontend;
 
-use App\Models\ContentPage;
+use App\Models\Event;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Posts extends Component
+class Events extends Component
 {
-
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
 
     public function render()
     {
-        $posts = ContentPage::simplePaginate(10);
+        $events = Events::simplePaginate(10);
 
-        return view('livewire.frontend.posts' , compact('posts'));
+        return view('livewire.frontend.events' , compact('events'));
     }
+
 }

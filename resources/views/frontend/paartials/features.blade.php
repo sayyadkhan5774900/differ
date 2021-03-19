@@ -1,3 +1,4 @@
+@isset($services)
 <section id="services" class="features">
   <div class="container">
 
@@ -41,5 +42,5 @@
     </div>
 
   </div>
-</section>
-
+</section>  
+@endisset

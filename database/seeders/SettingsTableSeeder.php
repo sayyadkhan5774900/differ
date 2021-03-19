@@ -58,6 +58,10 @@ class SettingsTableSeeder extends Seeder
                 'value' => 'https://www.youtube.com/watch?v=jDDaplaOz7Q'
             ],
             [
+                'key'   => 'about_button_name',
+                'value' => 'Read More'
+            ],
+            [
                 'key'   => 'about_button_link',
                 'value' => 'htpp://facebook.com'
             ],

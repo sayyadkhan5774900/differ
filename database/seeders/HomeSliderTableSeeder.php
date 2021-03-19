@@ -38,5 +38,13 @@ class HomeSliderTableSeeder extends Seeder
             'button_link' => '#about',
             'button_name' => 'Read More',
         ]);
+
+        $sliders = HomeSlider::all();
+
+         foreach($sliders as $key => $slider)
+        {
+            $photo_id = $key+1;
+            $slider->addMedia(storage_path()."/seeders/sliders/$photo_id.jpg")->preservingOriginal()->toMediaCollection('background_image');
+        }
     }
 }

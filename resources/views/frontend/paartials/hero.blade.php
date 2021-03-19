@@ -1,28 +1,29 @@
 <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
-    <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
-
+    <div id="heroCarousel" class="carousel carousel-fade" data-ride="carousel">
 
       @foreach ($sliders as $slider)
-      <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
-        <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">{!! $slider->title !!}</h2>
-          <p class="animate__animated fanimate__adeInUp">{!! $slider->body_text !!}</p>
-          @if ($slider->button_link != null && $slider->button_name != null)
-          <a href="{{ $slider->button_link ? "$slider->button_link" : "" }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">{!! $slider->button_name !!}</a>
-          @endif
-        </div>
+        <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}" style="background-image: url({{ $slider->background_iamge->getUrl() }});">
+            <div class="carousel-container">
+              <h2 class="animate__animated animate__fadeInDown">{!! $slider->title !!}</h2>
+              <p class="animate__animated fanimate__adeInUp">{!! $slider->body_text !!}</p>
+              @if ($slider->button_link != null && $slider->button_name != null)
+              <a href="{{ $slider->button_link ? "$slider->button_link" : "" }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">{!! $slider->button_name !!}</a>
+              @endif
+            </div>
       </div>
       @endforeach
 
-            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-
-      <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+      <div class="container">
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+  
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
 
     </div>
 

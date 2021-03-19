@@ -21,7 +21,7 @@ class NotificationTableSeeder extends Seeder
 
         $batch = Batch::inRandomOrder()->active()->first();
 
-        $student = Student::find(6);
+        $student = Student::find(5);
 
         $notifications = [
             [

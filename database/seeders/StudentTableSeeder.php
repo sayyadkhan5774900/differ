@@ -50,14 +50,7 @@ class StudentTableSeeder extends Seeder
                 'email'          => $faker->safeEmail,
                 'password'       => bcrypt('password'),
                 'remember_token' => null,
-            ],
-            [
-                'name'           => $faker->userName,
-                'email'          => $faker->safeEmail,
-                'password'       => bcrypt('password'),
-                'remember_token' => null,
-            ],
-
+            ]
         ];
 
         $batch = Batch::inRandomOrder()->active()->first();

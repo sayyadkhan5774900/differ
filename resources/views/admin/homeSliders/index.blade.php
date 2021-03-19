@@ -38,6 +38,9 @@
                             {{ trans('cruds.homeSlider.fields.button_name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.homeSlider.fields.background_iamge') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -62,6 +65,13 @@
                             </td>
                             <td>
                                 {{ $homeSlider->button_name ?? '' }}
+                            </td>
+                            <td>
+                                @if($homeSlider->background_iamge)
+                                    <a href="{{ $homeSlider->background_iamge->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $homeSlider->background_iamge->getUrl('thumb') }}">
+                                    </a>
+                                @endif
                             </td>
                             <td>
                                 @can('home_slider_show')

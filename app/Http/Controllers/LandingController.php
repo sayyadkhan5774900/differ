@@ -19,6 +19,7 @@ use Spatie\MediaLibrary\Support\MediaStream;
 use Symfony\Component\HttpFoundation\Response;
 
 
+
 class LandingController extends Controller
 {
     public function landing()
@@ -54,6 +55,12 @@ class LandingController extends Controller
     public function materialDownload($id)
     {
         $material = StudyMaterial::with(['media'])->find($id);
+
+        $files = $material->getMedia('file');
+
+        return MediaStream::create('my-files.zip')->addMedia($files);
+
+        dd($material->file);
         return response()->download($material->file->getPath());
     }
    
@@ -69,6 +76,16 @@ class LandingController extends Controller
         $materials = StudyMaterial::simplePaginate(10);
 
         return view('frontend/study_materials', compact('materials'));
+    }
+
+    public function blog()
+    {
+        return view('frontend/blog');
+    }
+
+    public function blog()
+    {
+        return view('frontend/events');
     }
 
     public function profile()

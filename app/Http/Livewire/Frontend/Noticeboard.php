@@ -15,7 +15,7 @@ class Noticeboard extends Component
 
     public function render()
     {
-        $noticeboards = Notices::with(['media'])->simplePaginate(10);
+        $noticeboards = Notices::with(['media'])->Paginate(1);
 
         return view('livewire.frontend.noticeboard', compact('noticeboards'));
     }

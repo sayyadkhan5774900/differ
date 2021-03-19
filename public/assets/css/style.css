@@ -142,7 +142,6 @@ h6 {
 }
 
 
-
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -384,8 +383,22 @@ h6 {
     width: 100%;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(0deg, #111847 0%, #162588 100%);
+    /* background: linear-gradient(0deg, #111847 0%, #162588 100%); */
     padding: 0;
+}
+
+#hero .carousel-item {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    height: 100vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #hero .carousel-container {
@@ -867,7 +880,6 @@ section {
         margin: 0;
     }
 }
-
 
 .services .title a:hover {
     color: #037def;

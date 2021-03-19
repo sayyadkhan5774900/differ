@@ -1,3 +1,4 @@
+@isset($testimonials)
 <section id="testimonials" class="testimonials">
   <div class="container">
 
@@ -29,3 +30,4 @@
 
   </div>
 </section>
+@endisset
