@@ -83,7 +83,7 @@ class LandingController extends Controller
         return view('frontend/blog');
     }
 
-    public function blog()
+    public function events()
     {
         return view('frontend/events');
     }
