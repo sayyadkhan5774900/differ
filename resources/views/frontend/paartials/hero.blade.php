@@ -2,7 +2,7 @@
     <div id="heroCarousel" class="carousel carousel-fade" data-ride="carousel">
 
       @foreach ($sliders as $slider)
-        <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}" style="background-image: url({{ $slider->background_iamge->getUrl() }});">
+        <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}" style="background-image: url({{ $slider->background_iamge ? $slider->background_iamge->getUrl() : '' }});">
             <div class="carousel-container">
               <h2 class="animate__animated animate__fadeInDown">{!! $slider->title !!}</h2>
               <p class="animate__animated fanimate__adeInUp">{!! $slider->body_text !!}</p>
