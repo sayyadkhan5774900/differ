@@ -1791,3 +1791,17 @@ section {
 #footer .credits {
     font-size: 13px;
 }
+
+/*--------------------------------------------------------------
+# Sliders
+--------------------------------------------------------------*/
+
+.carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: initial;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
